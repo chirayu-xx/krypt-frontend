@@ -80,7 +80,9 @@ export const TransactionProvider = ({children}) => {
 
     const connectWallet = async() => {
         try {
-            if(!ethereum) return alert("Please install MetaMask extension");
+            if(!ethereum) {
+                window.location.href = "https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en";
+            }
             const accounts = await ethereum.request({method:'eth_requestAccounts'})
             setCurrentAccount(accounts[0]);
         } catch (err) {
