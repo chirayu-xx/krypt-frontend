@@ -9,6 +9,7 @@ const NavbarItem = ({ title, classProps }) => {
 };
 
 const Navbar = () => {
+  const {currentAccount, connectWallet} = useContext(TransactionContext);
   const [toggleMenu, setToggleMenu] = useState(false);
   return (
     <nav className="w-full flex md:justify-center justify-between items-center p-4">
@@ -19,9 +20,9 @@ const Navbar = () => {
         {["Market", "Exchange", "Tutorials", "Wallets"].map((item, index) => (
           <NavbarItem key={item + index} title={item} />
         ))}
-        <li className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
+       {!currentAccount && <li className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]" onClick={connectWallet}>
           Login
-        </li>
+        </li>}
       </ul>
       <div className="flex relative">
         {toggleMenu ? (
