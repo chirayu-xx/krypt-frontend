@@ -39,7 +39,6 @@ export const TransactionProvider = ({children}) => {
                 keyword: transaction.keyword,
                 amount:parseInt(transaction.amount._hex) /(10** 18) 
             }))
-            console.log(structuredTransactions)
             setTransactions(structuredTransactions)
         } catch (error) {
             console.log(error)
@@ -70,7 +69,7 @@ export const TransactionProvider = ({children}) => {
             else {
                 console.log("No accounts found");
             }
-            console.log(accounts)  
+             
         } catch (error) {
             console.log(error);
             throw new Error("No ethereum object.")
